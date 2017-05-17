@@ -2,6 +2,10 @@
 
 \documentclass[tikz]{standalone}
 \usepackage{tikz}
+
+\usepackage{tkz-euclide}
+\usepackage[eulergreek]{sansmath}
+
 \begin{document}
 \title{FVTX}
 
@@ -12,18 +16,23 @@
 \definecolor{bazaar}{rgb}{0.6, 0.47, 0.48}
 \definecolor{blizzardblue}{rgb}{0.67, 0.9, 0.93}
 
+\definecolor{tableau10_blue}{rgb}{0, 0.42, 0.64}
+\definecolor{tableau10_orange}{rgb}{1, 0.50, 0.06}
+\definecolor{tableau10_blue2}{rgb}{0.37, 0.62, 0.82}
+\definecolor{tableau10_gray2}{rgb}{0.35,0.35,0.35}
+
 % zero-line	
 \newcommand{ \beamcenter }{
 
 	\draw [dashed, thin] ( -4.5,0 ) -- (4.5,0);
 	
-}	
+}
 
 % BaBAr solenoid magnet		
 \newcommand{\magnet}{
 
         % cryostat
-	\draw[fill=gray] (-1.9250, 1.4200) -- (-1.9250, 1.8843) -- (-1.6290, 1.8843) -- (-1.6290, 1.7800) -- (1.6290, 1.7800) -- (1.6290, 1.8843) -- (1.9250, 1.8843) -- (1.9250, 1.4200) -- (-1.9250, 1.4200);                                                       
+	\draw[fill=tableau10_gray2] (-1.9250, 1.4200) -- (-1.9250, 1.8843) -- (-1.6290, 1.8843) -- (-1.6290, 1.7800) -- (1.6290, 1.7800) -- (1.6290, 1.8843) -- (1.9250, 1.8843) -- (1.9250, 1.4200) -- (-1.9250, 1.4200);                                                       
  
 	%  coil
 	% \draw[fill=amber(sae/ece)] (-1.7450, 1.5189) -- (1.7450, 1.5189) -- (1.7450, 1.4781) -- (-1.7450, 1.4781) -- (-1.7450, 1.5189);    
@@ -35,7 +44,7 @@
 
 	% sPHENIX pCDR 2015, figure 10.4
 	% start top-right corner
-	\draw[fill=airforceblue] ( 3.1549 - 0.0320, 2.6350 ) -- ( 3.1549 - 0.0320, 1.9500 ) -- ( 1.5420, 1.9500 ) -- ( 1.5420, 1.8200 ) -- ( -1.5420, 1.8200 ) --  ( -1.5420, 1.9500 )  -- ( -3.1549 + 0.0320, 1.9500 ) -- ( -3.1549 + 0.0320, 2.6350 ) -- ( 3.1549 - 0.0320, 2.6350 );
+	\draw[fill=tableau10_blue] ( 3.1549 - 0.0320, 2.6350 ) -- ( 3.1549 - 0.0320, 1.9500 ) -- ( 1.5420, 1.9500 ) -- ( 1.5420, 1.8200 ) -- ( -1.5420, 1.8200 ) --  ( -1.5420, 1.9500 )  -- ( -3.1549 + 0.0320, 1.9500 ) -- ( -3.1549 + 0.0320, 2.6350 ) -- ( 3.1549 - 0.0320, 2.6350 );
 	
 }
 
@@ -44,7 +53,7 @@
 
 	% sPHENIX pCDR 2015, figure 10.4
 	% start top-right corner
-	\draw[fill=bluegray] ( 2.1750, 1.3700 ) -- ( 2.1750, 1.1350 ) -- ( -2.1750, 1.1350 ) -- ( -2.1750, 1.3700 ) -- ( 2.1750, 1.3700 );
+	\draw[fill=tableau10_blue] ( 2.1750, 1.3700 ) -- ( 2.1750, 1.1350 ) -- ( -2.1750, 1.1350 ) -- ( -2.1750, 1.3700 ) -- ( 2.1750, 1.3700 );
 
 }
 
@@ -53,18 +62,23 @@
 
 	% sPHENIX pCDR 2015, figure 10.4
 	% start top-right corner
-%	\draw[fill=airforceblue] (-3.6081,2.6350) -- (-3.6081, 0.9500) -- (-3.1549 - 0.1533, 0.9500)  -- (-3.1549 - 0.1533, 2.6350) -- (-3.6081,2.6350);
-	\draw[fill=airforceblue] (-3.38690,2.6350) -- (-3.38690, 0.9500) -- (-3.28490, 0.9500)  -- (-3.28490, 2.6350) -- (-3.38690,2.6350);	
-
+	\draw[fill=tableau10_gray2] (-3.38690,2.6350) -- (-3.38690, 0.3000) -- (-3.28490, 0.3000)  -- (-3.28490, 2.6350) -- (-3.38690,2.6350);	
 }
-	
+
+% Return yoke e-side
+\newcommand{ \edooreic }{
+
+	% version with larger opening for DIRC
+	\draw[fill=tableau10_gray2] (-3.38690,2.6350) -- (-3.38690, 0.9500) -- (-3.28490, 0.9500)  -- (-3.28490, 2.6350) -- (-3.38690,2.6350);	
+}
+		
 % Return yoke h-side
 \newcommand{ \hdoor }{
 
 	% sPHENIX pCDR 2015, figure 10.4
 	% start top-right corner
 %	\draw[fill=airforceblue] (3.6081,2.6350) -- (3.6081, 0.3000) -- (3.1549 + 0.1533, 0.3000)  -- (3.1549 + 0.1533, 2.6350) -- (3.6081,2.6350);
-	\draw[fill=airforceblue] (3.38690, 2.6350) -- (3.38690, 0.3000) -- (3.28490, 0.3000)  -- (3.28490, 2.6350) -- (3.38690, 2.6350);
+	\draw[fill=tableau10_gray2] (3.38690, 2.6350) -- (3.38690, 0.3000) -- (3.28490, 0.3000)  -- (3.28490, 2.6350) -- (3.38690, 2.6350);
 }
 
 % Barrel ECAL
@@ -73,7 +87,7 @@
 
 	% sPHENIX pCDR 2015, figure 10.4
 	% start top-right corner
-	\draw[fill=blizzardblue] ( 1.4426, 1.0800 ) -- ( 1.4426, 0.9500 ) -- ( -1.4426, 0.9500 ) -- ( -1.4426, 1.0800 ) -- ( 1.4426, 1.0800 );
+	\draw[fill=tableau10_blue2] ( 1.4426, 1.0800 ) -- ( 1.4426, 0.9500 ) -- ( -1.4426, 0.9500 ) -- ( -1.4426, 1.0800 ) -- ( 1.4426, 1.0800 );
 
 }
 
@@ -81,19 +95,26 @@
 \newcommand{ \tpc }
 {
 
-	% sPHENIX pCDR 2015, figure 10.4
 	% start top-right corner
-	\draw[fill=bazaar] ( 1.0018, 0.8000 ) -- ( 1.0018, 0.0250 ) -- ( -1.0018, 0.0250 ) -- ( -1.0018, 0.8000 ) -- ( 1.0018, 0.8000 );
+	% inner radius 20cm, outer radius 80cm
+	% length = 211cm
+	\draw[fill=tableau10_orange] ( 1.055, 0.8000 ) -- ( 1.055, 0.200 ) -- ( -1.055, 0.2000 ) -- ( -1.055, 0.8000 ) -- ( 1.055, 0.8000 );
 
 }
 
 %h-going ECAL
 \newcommand{ \hecalfsphenix }
 {
+	% /ForwardEcal/mapping/towerMap_FEMC_fsPHENIX_v002.txt
+	% z0 = 305
+	% PbSc: dz = 36.3 cm, zmin = 286.850 cm, zmax = 323.150 cm, ymin = 22.5 cm, ymax = 175.5 cm
+	% MPC: dz = 18 cm, zmin = 296 cm, zmax = 314 cm, ymin = 11 cm, ymax = 22 cm
 
-	% towerMap_FEMC_v005.txt 
-	\draw[fill=blizzardblue] ( 3.28250, 1.82655 ) -- ( 3.28250, 0.1 ) -- ( 2.91750, 0.1 ) -- ( 2.91750, 1.82655 ) -- ( 3.28250, 1.82655 );
+	% PHENIX lead-scintillator, 
+	\draw[fill=tableau10_blue2] ( 3.23150, 1.755 ) -- ( 3.23150, 0.225 ) -- ( 2.86850, 0.225 ) -- ( 2.86850, 1.755 ) -- ( 3.23150, 1.755 );
 
+        % PHENIX MPC
+	\draw[fill=tableau10_blue2] ( 3.14, 0.22 ) -- ( 3.14, 0.11 ) -- ( 2.96, 0.11 ) -- ( 2.96, 0.22 ) -- ( 3.14, 0.22 );
 }
 
 %h-going HCAL
@@ -101,7 +122,7 @@
 {
 
 	% towerMap_FHCAL_v004.txt 
-\draw[fill=bluegray] ( 4.5, 2.62 ) -- ( 4.5, 0.05 ) -- ( 3.5, 0.05 ) -- ( 3.5, 2.62 ) -- ( 4.5, 2.62 );
+\draw[fill=tableau10_blue] ( 4.5, 2.62 ) -- ( 4.5, 0.05 ) -- ( 3.5, 0.05 ) -- ( 3.5, 2.62 ) -- ( 4.5, 2.62 );
 
 }
 
@@ -109,9 +130,9 @@
 \newcommand{ \hgemfsphenix }
 {
 
-\draw[ultra thick,bazaar] ( 1.2, 0.1 ) -- ( 1.2, 0.8 );
-\draw[ultra thick,bazaar] ( 1.5, 0.1 ) -- ( 1.5, 1 );
-\draw[ultra thick,bazaar] ( 2.7, 0.1 ) -- ( 2.7, 0.8 ) -- ( 2.5, 1.3);
+\draw[line width=1.5mm,tableau10_orange] ( 1.2, 0.1 ) -- ( 1.2, 0.8 );
+\draw[line width=1.5mm,tableau10_orange] ( 1.5, 0.1 ) -- ( 1.5, 1 );
+\draw[line width=1.5mm,tableau10_orange] ( 2.7, 0.1 ) -- ( 2.7, 0.8 ) -- ( 2.5, 1.3);
 
 }
 	
@@ -121,17 +142,17 @@
 \newcommand{ \hpiston }
 {
 
-\draw[fill=airforceblue] ( 1.2, 0.022 ) -- ( 3.4, 0.053 ) -- ( 3.4, 0.103 ) -- ( 1.2, 0.0353 ) -- ( 1.2, 0.022 );
+\draw[fill=tableau10_gray2] ( 1.2, 0.022 ) -- ( 3.4, 0.053 ) -- ( 3.4, 0.103 ) -- ( 1.2, 0.0353 ) -- ( 1.2, 0.022 );
 
 }
 
-%e-going ECAL
+%e-going ECAL 
 \newcommand{ \eecaleic }
 {
 
 	% ? cover eta -1.2 to -4.5
 	% start top-right corner
-	\draw[fill=blizzardblue] ( -1.01, 0.775 ) -- ( -1.01, 0.0220 ) -- ( -1.1850, 0.0220 ) -- ( -1.1850, 0.775 ) -- ( -1.01, 0.775 );
+	\draw[fill=tableau10_blue2] ( -1.01, 0.775 ) -- ( -1.01, 0.0220 ) -- ( -1.1850, 0.0220 ) -- ( -1.1850, 0.775 ) -- ( -1.01, 0.775 );
 
 }
 
@@ -232,8 +253,17 @@
 \end{tikzpicture}	
 
 %-------- fsPHENIX --------------------------------------------------------------------------------
-\begin{tikzpicture}[scale = 3]
+\begin{tikzpicture}[scale = 3,font=\sffamily\huge, label style/.style={font=\huge\sansmath}]
+
+  \tkzInit[xmax=4.5,ymax=3,xmin=-4.5,ymin=-0.0]
+%  \tkzGrid
 	
+    \tkzDrawX[label={z [m]}]
+    \tkzDrawY[label={y [m]}]
+    \tkzDefPoint(0,-0.1){A}\tkzLabelPoint[below](A){0}
+    \tkzDefPoint(3,-0.1){B}\tkzLabelPoint[below](B){3}
+    \tkzDefPoint(-0.1,3){C}\tkzLabelPoint[left](C){3}
+    		
 	\beamcenter
 	\magnet
 	\outerhcal
@@ -247,6 +277,21 @@
 	\hecalfsphenix
 	\hhcalfsphenix
 	
+% labels
+	\node[] at (-1.35,0.5) {TPC};
+	\node[] at (-1.85,1.0) {EMCal};
+	\node[] at (-2.5,1.28) {HCal};
+	\node[] at (-2.4,1.7) {Solenoid};
+	\node[] at (-2.5,2.8) {HCal};
+
+	\node[] at (-3.95,1.7) {Flux return};
+
+	\node[] at (3.8,2.8) {HCal};
+	\node[] at (2.5,1.6) {EMCal};
+	\node[] at (1.85,0.7) {GEMs};
+
+	\node[] at (2.1,0.2) {Field shaper};
+
 
 \end{tikzpicture}
 
