@@ -180,9 +180,13 @@
 % Barrel DIRC
 \newcommand{ \dirc }
 {
-	% ?
+	% BaBar style DIRC with long bars
 	% start top-right corner
-	\draw[fill=tableau10_brown] ( 1.350, 0.9100 ) -- ( 1.350, 0.8100 ) -- ( 1.350-4.95, 0.8100 ) -- ( 1.350-4.95, 0.9100 ) -- ( 1.350, 0.9100 );
+%	\draw[fill=tableau10_brown] ( 1.350, 0.9100 ) -- ( 1.350, 0.8100 ) -- ( 1.350-4.95, 0.8100 ) -- ( 1.350-4.95, 0.9100 ) -- ( 1.350, 0.9100 );
+
+	% High-performance DIRC with short bars
+	% start top-right corner
+	\draw[fill=tableau10_brown] ( 1.350, 0.9100 ) -- ( 1.350, 0.8100 ) -- ( 1.350-2.70, 0.8100 ) -- ( 1.350-2.70, 0.9100 ) -- ( 1.350, 0.9100 );
 
 }
 
@@ -325,21 +329,42 @@
 % labels
 	\node[] at (-1.8,0.5) {Central tracker};
 	
-	\node[] at (-1.8,1.0) {ECal};
-	\node[] at (-2.5,1.28) {HCal};
+	\node[] at (-1.8,1.0) {CEMC};
+	\node[] at (-2.5,1.28) {HCAL};
 	\node[] at (-2.4,1.7) {Solenoid};
-	\node[] at (-2.5,2.8) {HCal};
+	\node[] at (-2.5,2.8) {HCAL};
 
 	\node[] at (-3.95,1.7) {Flux return};
 
-	\node[] at (3.8,2.8) {HCal};
-	\node[] at (2.55,1.6) {ECal};
-	\node[] at (1.85,0.7) {GEMs};
+	\node[] at (3.8,2.8) {FHCAL};
+	\node[] at (2.55,1.6) {FEMC};
+	\node[] at (1.85,0.7) {GEM};
 
 	\node[] at (2.1,0.2) {Field shaper};
 
 
 \end{tikzpicture}
+
+
+%-------- fsPHENIX - NO LABEL / AXIS --------------------------------------------------------------------------------
+\begin{tikzpicture}[scale = 3,font=\sffamily\huge, label style/.style={font=\sffamily\huge}]
+			
+	\beamcenter
+	\magnet
+	\outerhcal
+	\edoor
+	\hdoor
+	\hpiston
+	\innerhcal
+	\cecal
+	\tpc			
+	\hgemfsphenix
+	\hecalfsphenix
+	\hhcalfsphenix
+
+
+\end{tikzpicture}
+
 
 
 %-------- fsPHENIX + mRICH--------------------------------------------------------------------------------
@@ -375,19 +400,20 @@
 % labels
 	\node[] at (-1.8,0.5) {Central tracker};
 	
-	\node[] at (-1.8,1.0) {ECal};
-	\node[] at (-2.5,1.28) {HCal};
+	\node[] at (-1.8,1.0) {CEMC};
+	\node[] at (-2.5,1.28) {HCAL};
 	\node[] at (-2.4,1.7) {Solenoid};
-	\node[] at (-2.5,2.8) {HCal};
+	\node[] at (-2.5,2.8) {HCAL};
 
 	\node[] at (-3.95,1.7) {Flux return};
 
-	\node[] at (3.8,2.8) {HCal};
-	\node[] at (2.6,1.8) {ECal};
-	\node[] at (1.85,0.7) {GEMs};
-	\node[] at (2.4,1.5) {mRICH};
-
+	\node[] at (3.8,2.8) {FHCAL};
+	\node[] at (2.6,1.8) {FEMC};
+	\node[] at (1.85,0.7) {GEM};
+	
 	\node[] at (2.1,0.2) {Field shaper};
+
+	\node[] at (2.4,1.5) {mRICH};
 
 
 \end{tikzpicture}
@@ -410,7 +436,8 @@
 	%\beamcenter
 	\magnet
 	\outerhcal
-	\edooreic
+	%\edooreic
+	\edoor
 	\hdoor
 	\innerhcal
 	\cecal
@@ -430,19 +457,61 @@
 	\draw[fill=tableau10_blue2, shift={(-4,2.7)}] (0.0,0.0) rectangle (0.3,0.15);
 
 	\node[] at (-2.42,3.375) {Magnet and flux return};
-	\node[] at (-3.3,3.075) {HCal};
-	\node[] at (-3.3,2.775) {ECal};
+	\node[] at (-2.6,3.075) {Hadron calorimeter};
+	\node[] at (-2.2,2.775) {Electromagnetic calorimeter};
 
 	\draw[fill=tableau10_orange2, shift={(2,3.3)}] (0.0,0.0) rectangle (0.3,0.15);
 	\draw[fill=tableau10_orange, shift={(2,3.0)}] (0.0,0.0) rectangle (0.3,0.15);
 	\draw[fill=tableau10_brown, shift={(2,2.7)}] (0.0,0.0) rectangle (0.3,0.15);
 
 	\node[] at (3.17,3.375) {Central tracking};
-	\node[] at (2.7,3.075) {GEMs};
+	\node[] at (2.7,3.075) {GEM};
 	\node[] at (2.7,2.775) {RICH};
 
 
 \end{tikzpicture}
+
+%-------- EIC-D1D - NO LABELS/AXIS--------------------------------------------------------------------------------
+\begin{tikzpicture}[scale = 3,font=\sffamily\huge, label style/.style={font=\sffamily\huge}]
+    	
+	%\beamcenter
+	\magnet
+	\outerhcal
+	%\edooreic
+	\edoor
+	\hdoor
+	\innerhcal
+	\cecal
+	\hgemeic
+	\hecaleic
+	\hhcaleic
+	\tpc			
+	\dirc	
+	\hrichgas
+	\haerogel
+	\egem
+	\eecaleic
+	\ericheic
+	
+	\draw[fill=tableau10_gray2, shift={(-4,3.3)}] (0.0,0.0) rectangle (0.3,0.15);
+	\draw[fill=tableau10_blue, shift={(-4,3.0)}] (0.0,0.0) rectangle (0.3,0.15);
+	\draw[fill=tableau10_blue2, shift={(-4,2.7)}] (0.0,0.0) rectangle (0.3,0.15);
+
+	\node[] at (-2.42,3.375) {Magnet and flux return};
+	\node[] at (-2.6,3.075) {Hadron calorimeter};
+	\node[] at (-2.2,2.775) {Electromagnetic calorimeter};
+
+	\draw[fill=tableau10_orange2, shift={(2,3.3)}] (0.0,0.0) rectangle (0.3,0.15);
+	\draw[fill=tableau10_orange, shift={(2,3.0)}] (0.0,0.0) rectangle (0.3,0.15);
+	\draw[fill=tableau10_brown, shift={(2,2.7)}] (0.0,0.0) rectangle (0.3,0.15);
+
+	\node[] at (3.17,3.375) {Central tracking};
+	\node[] at (2.7,3.075) {GEM};
+	\node[] at (2.7,2.775) {RICH};
+
+
+\end{tikzpicture}
+
 
 
 %-------- EIC-D1D using LOI reference numbers for RICH and e-ECAL -------------
