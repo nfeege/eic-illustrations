@@ -17,7 +17,7 @@ double theta2eta(const double theta)
  * EIC detectors: ephenix_v1 CAD drawing (HCAL) + ECAL and PID detectors and GEM from LOI 2014 ("babar_v11")
  *
  */
-void show_detectorGeometry_v3()
+void detector_sphenix_eic()
 {
   gStyle->SetOptStat(0);
 
