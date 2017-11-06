@@ -7,7 +7,7 @@
 \usepackage[eulergreek]{sansmath}
 
 \begin{document}
-\title{FVTX}
+\title{EICDetector}
 
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
 \definecolor{bluegray}{rgb}{0.4, 0.6, 0.8}
@@ -28,6 +28,17 @@
 
 	\draw [dashed, thin] ( -4.5,0 ) -- (4.5,0);
 	
+}
+
+
+% draw line at fixed eta
+\edef\etar{3} % maximum r for eta lines
+
+\newcommand{ \etaline }[1]{
+% calculate x-value to y value
+\pgfmathparse{ \etar / tan( 2.0 * atan( exp( -1.0 * #1 ) )  )}
+\edef\tmp{\pgfmathresult}
+\draw [red,thick] ( 0,0 ) -- ( \tmp , \etar);
 }
 
 % BaBAr solenoid magnet		
@@ -93,6 +104,12 @@
 
 }
 
+% Barrel ECAL reduced to eta 0.85 coverage (2017 de-scoping exercise)
+\newcommand{ \cecalB }
+{
+	\draw[fill=tableau10_blue2] ( 1.03261, 1.0800 ) -- ( 1.03261, 0.9500 ) -- ( -1.03261, 0.9500 ) -- ( -1.03261, 1.0800 ) -- ( 1.03261, 1.0800 );
+
+}
 % TPC / Barrel tracking
 \newcommand{ \tpc }
 {
@@ -513,17 +530,64 @@
 \end{tikzpicture}
 
 
+%-------- EIC-D1D - with 2017 DESCOPING-----------------------------------------------------------------------------
+\begin{tikzpicture}[scale = 3,font=\sffamily\huge, label style/.style={font=\sffamily\huge}]
 
-%-------- EIC-D1D using LOI reference numbers for RICH and e-ECAL -------------
-\begin{tikzpicture}[scale = 3]
+	\tkzInit[xmax=4.5,ymax=3,xmin=-4.5,ymin=-0.0]
 	
-	\hrichgasloi
-	\eecaleicloi
-	\haerogelloi
+    \tkzDrawX[label={z [m]}, line width=1]
+    \tkzDrawY[label={y [m]}, line width=1]
+    \tkzDefPoint(0,-0.1){A0}\tkzLabelPoint[below](A0){0}
+    \tkzDefPoint(1,-0.1){A1}\tkzLabelPoint[below](A1){1}
+    \tkzDefPoint(2,-0.1){A2}\tkzLabelPoint[below](A2){2}
+    \tkzDefPoint(3,-0.1){A3}\tkzLabelPoint[below](A3){3}
+    \tkzDefPoint(4,-0.1){A4}\tkzLabelPoint[below](A4){4}
+    \tkzDefPoint(-0.1,3){B3}\tkzLabelPoint[left](B3){3}
+    	
+	%\beamcenter
 	\magnet
+	\outerhcal
+	\edoor
+	\hdoor
+	\cecalB
+	\hgemeic
+	\hecaleic
+	\hhcaleic
+	\tpc			
+	\dirc	
+	\hrichgas
+	\haerogel
+	\egem
+	\eecaleic
+	\ericheic
+	
+	% eta lines
+	\etaline{ 1}
+	\etaline{-1}
+	\etaline{ 2}
+	\etaline{-2}
 
 	
+	\draw[fill=tableau10_gray2, shift={(-4,3.3)}] (0.0,0.0) rectangle (0.3,0.15);
+	\draw[fill=tableau10_blue, shift={(-4,3.0)}] (0.0,0.0) rectangle (0.3,0.15);
+	\draw[fill=tableau10_blue2, shift={(-4,2.7)}] (0.0,0.0) rectangle (0.3,0.15);
+
+	\node[] at (-2.42,3.375) {Magnet and flux return};
+	\node[] at (-2.6,3.075) {Hadron calorimeter};
+	\node[] at (-2.2,2.775) {Electromagnetic calorimeter};
+
+	\draw[fill=tableau10_orange2, shift={(2,3.3)}] (0.0,0.0) rectangle (0.3,0.15);
+	\draw[fill=tableau10_orange, shift={(2,3.0)}] (0.0,0.0) rectangle (0.3,0.15);
+	\draw[fill=tableau10_brown, shift={(2,2.7)}] (0.0,0.0) rectangle (0.3,0.15);
+
+	\node[] at (3.17,3.375) {Central tracking};
+	\node[] at (2.7,3.075) {GEM};
+	\node[] at (2.7,2.775) {RICH};
+
+
 \end{tikzpicture}
+
+
 
 
 \end{document}
